@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://github.com/pndx/Gout-calculator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="resources/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">YOUR_TITLE</h3>
