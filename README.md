@@ -127,7 +127,7 @@ Distributed under the GNU License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@wong_xiaoyi](https://twitter.com/wong_xiaoyi)
+Twitter - [@wong_xiaoyi](https://twitter.com/wong_xiaoyi)
 
 Project Link: [https://github.com/pndx/Gout-calculator](https://github.com/pndx/Gout-calculator)
 
