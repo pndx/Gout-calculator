@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Human;
 
+use App\Models\Human;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HumanController extends Controller
 {
@@ -34,7 +36,15 @@ class HumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $human = new Human();
+
+        $human->name       = $request->name;
+        $human->age        = $request->age;
+        $human->address    = $request->address;
+        $human->is_painful = $request->is_painful;
+        $human->purine     = $request->purine;
+
+        $human->save();
     }
 
     /**
