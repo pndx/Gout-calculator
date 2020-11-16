@@ -1,12 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "pndx/gout-calculator",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A simple project to calculate gout.",
     "keywords": [
-        "framework",
-        "laravel"
+        "gout",
+        "pndx",
+        "calculator"
     ],
-    "license": "MIT",
+    "license": "GPL-3.0-only",
     "require": {
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
@@ -25,7 +26,7 @@
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-master"
     },
     "config": {
         "optimize-autoloader": true,
