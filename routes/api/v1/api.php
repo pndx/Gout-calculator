@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Human\HumanController;
+use App\Http\Controllers\Api\V1\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/login', [LoginController::class, 'login']);
 Route::middleware('auth:api')->resource('/human', HumanController::class);
