@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Human;
 
 use App\Models\Human;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 
 class HumanController extends Controller
@@ -11,84 +12,90 @@ class HumanController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
-        //
+        return response();
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        //
+        return response();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request): Response
     {
         $human = new Human();
 
-        $human->name       = $request->name;
-        $human->age        = $request->age;
-        $human->address    = $request->address;
-        $human->is_painful = $request->is_painful;
-        $human->purine     = $request->purine;
+        $human->name       = $request->input('name');
+        $human->age        = $request->input('age');
+        $human->address    = $request->input('address');
+        $human->is_painful = $request->input('is_painful');
+        $human->purine     = $request->input('purine');
 
-        $human->save();
+        $result = $human->save();
+        return response($result, 200);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
-        //
+        echo $id;
+        return response();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function edit($id)
+    public function edit(int $id): Response
     {
-        //
+        echo $id.'<br>';
+        return response();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): Response
     {
-        //
+        echo $id;
+        var_dump($request);
+        return response();
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function destroy($id)
+    public function destroy(int $id): Response
     {
-        //
+        echo $id.'<br><br>';
+        return response();
     }
 }
