@@ -27,3 +27,8 @@ Homestead.json
 _ide_helper.php
 *.sublime-project
 *.sublime-workspace
+coverage.xml
+sonar-project.properties
+sonar-scanner-cli-4.5.0.2216-linux.zip
+.scannerwork
+sonar-scanner-4.5.0.2216-linux
