@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Human\HumanController;
-use App\Http\Controllers\Api\V1\LoginController;
+use App\Http\Controllers\Api\V1\Auth\LoginController;
+use App\Http\Controllers\Api\V1\Human\HumanController;
+use App\Http\Controllers\Api\V1\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login', [LoginController::class, 'login']);
-Route::middleware('auth:api')->resource('/human', HumanController::class);
+Route::name('api.')->group(function () {
+    Route::middleware('auth:api')->group(function () {
+        Route::resource('human', HumanController::class);
+    });
+
+    Route::post('register', [RegisterController::class, 'register'])->name('register');
+    Route::post('login', [LoginController::class, 'login'])->name('login');
+});
+

@@ -12,7 +12,7 @@ class HumanSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Human::factory(10)->create();
     }

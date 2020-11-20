@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Exception;
 use App\Models\Human;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,15 +19,16 @@ class HumanFactory extends Factory
      * Define the model's default state.
      *
      * @return array
+     * @throws Exception
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name'       => $this->faker->name,
-            'age'        => rand(10, 60),
+            'age'        => random_int(10, 60),
             'address'    => $this->faker->address,
-            'is_painful' => rand(0, 1) === 1,
-            'purine'     => rand(100, 1000),
+            'is_painful' => random_int(0, 1) === 1,
+            'purine'     => random_int(100, 1000),
         ];
     }
 }
