@@ -27,7 +27,7 @@ class HumanFactory extends Factory
             'name'       => $this->faker->name,
             'age'        => random_int(10, 60),
             'address'    => $this->faker->address,
-            'is_painful' => random_int(0, 1) === 1,
+            'is_painful' => $this->faker->boolean,
             'purine'     => random_int(100, 1000),
         ];
     }

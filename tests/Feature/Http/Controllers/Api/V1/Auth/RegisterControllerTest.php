@@ -36,6 +36,6 @@ class RegisterControllerTest extends TestCase
         ]);
 
         // Assert
-        $response->assertSuccessful()->assertJsonStructure(['user', 'access_token']);
+        $response->assertSuccessful()->assertJsonStructure(['access_token']);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Exception;
 use App\Models\Food;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,12 +19,13 @@ class FoodFactory extends Factory
      * Define the model's default state.
      *
      * @return array
+     * @throws Exception
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name'   => $this->faker->name,
-            'purine' => rand(100, 400),
+            'purine' => random_int(100, 400),
         ];
     }
 }

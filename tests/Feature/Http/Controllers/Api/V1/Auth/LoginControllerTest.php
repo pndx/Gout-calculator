@@ -36,10 +36,10 @@ class LoginControllerTest extends TestCase
         $response = $this->post(route('api.login'), [
             'email'    => $this->user->email,
             'password' => $this->password,
-        ]);
+            ]);
 
         // Assert
-        $response->assertSuccessful()->assertJsonStructure(['user', 'access_token']);
+        $response->assertSuccessful()->assertJsonStructure(['access_token']);
     }
 
     /** @test */

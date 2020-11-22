@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,12 +16,12 @@ class LoginController extends Controller
     		'password' => 'required|string',
     	]);
 
-    	if (!Auth::attempt($login)) {
-    		return response(['message' => 'Invalid login credentials.']);
+    	if (!Auth::attempt($login) || !$user = Auth::user()) {
+    		return ['message' => 'Invalid login credentials.'];
     	}
 
-    	$accessToken = Auth::user()->createToken('authToken')->accessToken;
+    	$accessToken = $user->createToken('authToken')->accessToken;
 
-    	return response(['user' => Auth::user(), 'access_token' => $accessToken]);
+    	return ['access_token' => $accessToken];
     }
 }

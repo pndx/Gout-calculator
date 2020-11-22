@@ -6,17 +6,18 @@ use App\Models\Human;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 class HumanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
      */
-    public function index(): Response
+    public function index()
     {
-        return response();
+        return Human::all();
     }
 
     /**
@@ -33,9 +34,9 @@ class HumanController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return bool
      */
-    public function store(Request $request): Response
+    public function store(Request $request): bool
     {
         $human = new Human();
 
@@ -45,46 +46,38 @@ class HumanController extends Controller
         $human->is_painful = $request->input('is_painful');
         $human->purine     = $request->input('purine');
 
-        $result = $human->save();
-        return response($result, 200);
+        return $human->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return Human|Human[]|Collection|Model
      */
-    public function show(int $id): Response
+    public function show(int $id)
     {
-        echo $id;
-        return response();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit(int $id): Response
-    {
-        echo $id.'<br>';
-        return response();
+        return Human::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return bool
      */
-    public function update(Request $request, int $id): Response
+    public function update(Request $request, int $id): bool
     {
-        echo $id;
-        var_dump($request);
-        return response();
+        $human = Human::findOrFail($id);
+
+        $human->name       = $request->input('name');
+        $human->age        = $request->input('age');
+        $human->address    = $request->input('address');
+        $human->is_painful = $request->input('is_painful');
+        $human->purine     = $request->input('purine');
+
+        return $human->save();
     }
 
     /**
@@ -95,7 +88,6 @@ class HumanController extends Controller
      */
     public function destroy(int $id): Response
     {
-        echo $id.'<br><br>';
         return response();
     }
 }

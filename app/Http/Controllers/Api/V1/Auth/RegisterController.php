@@ -8,12 +8,12 @@ use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
-    public function register(Request $request)
+    public function register(Request $request): array
     {
         $register = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed'
+            'name'     => 'required',
+            'email'    => 'required|email|unique:users',
+            'password' => 'required|confirmed',
         ]);
 
         $register['password'] = bcrypt($request->input('password'));
@@ -22,6 +22,6 @@ class RegisterController extends Controller
 
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response([ 'user' => $user, 'access_token' => $accessToken]);
+        return ['access_token' => $accessToken];
     }
 }
