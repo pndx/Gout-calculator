@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\V1\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 

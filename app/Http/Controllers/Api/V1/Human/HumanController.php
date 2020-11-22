@@ -6,7 +6,6 @@ use Exception;
 use App\Models\Human;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
 use App\Http\Requests\Human\HumanStoreRequest;
 use App\Http\Requests\Human\HumanUpdateRequest;
 
@@ -35,37 +34,37 @@ class HumanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return Human|Human[]|Collection|Model
+     * @param Human $human
+     * @return Human
      */
-    public function show(int $id)
+    public function show(Human $human): Human
     {
-        return Human::findOrFail($id);
+        return $human;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param HumanUpdateRequest $request
-     * @param int $id
-     * @return bool
+     * @param Human $human
+     * @return Human
      */
-    public function update(HumanUpdateRequest $request, int $id): bool
+    public function update(HumanUpdateRequest $request, Human $human): Human
     {
-        $human = Human::findOrFail($id);
-
-        return $human->update($request->all());
+        $human->update($request->all());
+        return $human;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return bool|null
+     * @param Human $human
+     * @return Human
      * @throws Exception
      */
-    public function destroy(int $id): ?bool
+    public function destroy(Human $human): Human
     {
-        return Human::findOrFail($id)->delete();
+        $human->delete();
+        return $human;
     }
 }

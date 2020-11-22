@@ -6,7 +6,6 @@ use Exception;
 use App\Models\Food;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
 use App\Http\Requests\Food\FoodStoreRequest;
 use App\Http\Requests\Food\FoodUpdateRequest;
 
@@ -35,37 +34,37 @@ class FoodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return Food|Food[]|Collection|Model
+     * @param Food $food
+     * @return Food
      */
-    public function show(int $id)
+    public function show(Food $food): Food
     {
-        return Food::findOrFail($id);
+        return $food;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param FoodUpdateRequest $request
-     * @param int $id
-     * @return bool
+     * @param Food $food
+     * @return Food
      */
-    public function update(FoodUpdateRequest $request, int $id): bool
+    public function update(FoodUpdateRequest $request, Food $food): Food
     {
-        $food = Food::findOrFail($id);
-
-        return $food->update($request->all());
+        $food->update($request->all());
+        return $food;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return bool|null
+     * @param Food $food
+     * @return Food
      * @throws Exception
      */
-    public function destroy(int $id): ?bool
+    public function destroy(Food $food): Food
     {
-        return Food::findOrFail($id)->delete();
+        $food->delete();
+        return $food;
     }
 }
