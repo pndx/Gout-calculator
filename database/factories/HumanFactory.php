@@ -25,10 +25,10 @@ class HumanFactory extends Factory
     {
         return [
             'name'       => $this->faker->name,
-            'age'        => random_int(10, 60),
+            'age'        => $this->faker->randomNumber(2),
             'address'    => $this->faker->address,
             'is_painful' => $this->faker->boolean,
-            'purine'     => random_int(100, 1000),
+            'purine'     => $this->faker->randomNumber(2),
         ];
     }
 }

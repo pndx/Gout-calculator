@@ -24,19 +24,16 @@ class HumanControllerTest extends TestCase
         Passport::actingAs($user);
     }
 
-    /**
-     * @test
-     * @throws Exception
-     */
+    /** @test */
     public function a_human_can_be_added(): void
     {
         // Arrange
         $attribute = [
             'name'       => $this->faker->name,
-            'age'        => random_int(10, 60),
+            'age'        => $this->faker->randomNumber(2),
             'address'    => $this->faker->address,
             'is_painful' => $this->faker->boolean,
-            'purine'     => random_int(100, 1000),
+            'purine'     => $this->faker->randomNumber(2),
         ];
 
         // Act
@@ -60,17 +57,15 @@ class HumanControllerTest extends TestCase
             'id',
             'name',
             'age',
-            'created_at',
             'address',
             'is_painful',
             'purine',
+            'created_at',
             'updated_at',
         ]);
     }
 
-    /** @test
-     * @throws Exception
-     */
+    /** @test */
     public function cannot_show_a_human_with_wrong_id(): void
     {
         // Act
@@ -99,12 +94,47 @@ class HumanControllerTest extends TestCase
     {
         // Arrange
         $human = Human::factory()->create();
-        $updatedAddress = $this->faker->address;
+        $human->address = $this->faker->address;
 
-        $human->address = $updatedAddress;
         // Act
         $this->put(route('api.human.update', $human->id), $human->toArray());
 
-        $this->assertDatabaseHas('humans', ['id' => $human->id, 'address' => $updatedAddress]);
+        $this->assertDatabaseHas('humans', ['id' => $human->id, 'address' => $human->address]);
+    }
+
+    /** @test */
+    public function cannot_update_human_information_when_not_exists(): void
+    {
+        // Arrange
+        $human = Human::factory()->make();
+
+        // Act
+        $response = $this->put(route('api.human.update', 1), $human->toArray());
+
+        // Assert
+        $response->assertStatus(404);
+    }
+
+    /** @test */
+    public function can_delete_human_by_id(): void
+    {
+        // Arrange
+        $human = Human::factory()->create();
+
+        // Act
+        $this->delete(route('api.human.destroy', $human->id));
+
+        // Assert
+        $this->assertDatabaseMissing('humans', ['id' => $human->id]);
+    }
+
+    /** @test */
+    public function cannot_delete_human_by_wrong_id(): void
+    {
+        // Act
+        $response = $this->delete(route('api.human.destroy', 1));
+
+        // Assert
+        $response->assertStatus(404);
     }
 }

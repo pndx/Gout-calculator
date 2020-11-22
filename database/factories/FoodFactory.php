@@ -25,7 +25,7 @@ class FoodFactory extends Factory
     {
         return [
             'name'   => $this->faker->name,
-            'purine' => random_int(100, 400),
+            'purine' => $this->faker->randomNumber(2),
         ];
     }
 }

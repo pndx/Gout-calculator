@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\Food\FoodController;
 use App\Http\Controllers\Api\V1\Auth\LoginController;
 use App\Http\Controllers\Api\V1\Human\HumanController;
 use App\Http\Controllers\Api\V1\Auth\RegisterController;
@@ -23,7 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::name('api.')->group(function () {
     Route::middleware('auth:api')->group(function () {
-        Route::resource('human', HumanController::class);
+        Route::apiResources([
+            'human' => HumanController::class,
+            'food' => FoodController::class,
+        ]);
     });
 
     Route::post('register', [RegisterController::class, 'register'])->name('register');

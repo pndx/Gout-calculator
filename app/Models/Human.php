@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
+ * Class Human
+ *
+ * @package App\Models
  * @property string name
  * @property int age
  * @property string address
@@ -15,4 +18,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Human extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'age', 'address', 'is_painful', 'purine'];
 }
