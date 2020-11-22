@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api\V1\Human;
 
 use Exception;
 use App\Models\Human;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use App\Http\Requests\Human\HumanStoreRequest;
+use App\Http\Requests\Human\HumanUpdateRequest;
 
 class HumanController extends Controller
 {
@@ -23,10 +24,10 @@ class HumanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param HumanStoreRequest $request
      * @return Human|Model
      */
-    public function store(Request $request)
+    public function store(HumanStoreRequest $request)
     {
         return Human::create($request->all());
     }
@@ -45,21 +46,15 @@ class HumanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param HumanUpdateRequest $request
      * @param int $id
      * @return bool
      */
-    public function update(Request $request, int $id): bool
+    public function update(HumanUpdateRequest $request, int $id): bool
     {
         $human = Human::findOrFail($id);
 
-        $human->name       = $request->input('name');
-        $human->age        = $request->input('age');
-        $human->address    = $request->input('address');
-        $human->is_painful = $request->input('is_painful');
-        $human->purine     = $request->input('purine');
-
-        return $human->save();
+        return $human->update($request->all());
     }
 
     /**

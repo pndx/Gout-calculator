@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api\V1\Food;
 
 use Exception;
 use App\Models\Food;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use App\Http\Requests\Food\FoodStoreRequest;
+use App\Http\Requests\Food\FoodUpdateRequest;
 
 class FoodController extends Controller
 {
@@ -23,15 +24,12 @@ class FoodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param FoodStoreRequest $request
      * @return Food|Model
      */
-    public function store(Request $request)
+    public function store(FoodStoreRequest $request)
     {
-        return Food::create([
-            'name'   => $request->input('name'),
-            'purine' => $request->input('purine'),
-        ]);
+        return Food::create($request->all());
     }
 
     /**
@@ -48,18 +46,15 @@ class FoodController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param FoodUpdateRequest $request
      * @param int $id
      * @return bool
      */
-    public function update(Request $request, int $id): bool
+    public function update(FoodUpdateRequest $request, int $id): bool
     {
         $food = Food::findOrFail($id);
 
-        $food->name   = $request->input('name');
-        $food->purine = $request->input('purine');
-
-        return $food->save();
+        return $food->update($request->all());
     }
 
     /**
