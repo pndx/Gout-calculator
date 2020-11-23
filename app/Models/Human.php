@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * Class Human
  *
  * @package App\Models
+ * @property int id
  * @property string name
  * @property int age
  * @property string address
