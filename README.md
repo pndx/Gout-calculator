@@ -124,5 +124,5 @@ Project Link: [https://github.com/pndx/Gout-calculator](https://github.com/pndx/
 [issues-shield]: https://img.shields.io/github/issues/pndx/Gout-calculator.svg?style=flat-square
 [issues-url]: https://github.com/pndx/Gout-calculator/issues
 [license-shield]: https://img.shields.io/github/license/pndx/Gout-calculator.svg?style=flat-square
-[license-url]: https://github.com/pndx/Gout-calculator/blob/master/LICENSE.txt
+[license-url]: https://github.com/pndx/Gout-calculator/blob/main/LICENSE.txt
 [product-screenshot]: images/screenshot.png
