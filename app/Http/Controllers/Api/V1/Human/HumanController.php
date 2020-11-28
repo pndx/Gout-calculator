@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Api\V1\Human;
 use Exception;
 use App\Models\Human;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\HumanResource;
 use App\Http\Requests\Human\HumanStoreRequest;
 use App\Http\Requests\Human\HumanUpdateRequest;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class HumanController extends Controller
 {
@@ -15,31 +16,32 @@ class HumanController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        return Human::all();
+        return HumanResource::collection(Human::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param HumanStoreRequest $request
-     * @return Human|Model
+     * @return HumanResource
      */
-    public function store(HumanStoreRequest $request)
+    public function store(HumanStoreRequest $request): HumanResource
     {
-        return Human::create($request->all());
+        $human = Human::create($request->all());
+        return new HumanResource($human);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Human $human
-     * @return Human
+     * @return HumanResource
      */
-    public function show(Human $human): Human
+    public function show(Human $human): HumanResource
     {
-        return $human;
+        return new HumanResource($human);
     }
 
     /**
@@ -47,12 +49,12 @@ class HumanController extends Controller
      *
      * @param HumanUpdateRequest $request
      * @param Human $human
-     * @return Human
+     * @return HumanResource
      */
-    public function update(HumanUpdateRequest $request, Human $human): Human
+    public function update(HumanUpdateRequest $request, Human $human): HumanResource
     {
         $human->update($request->all());
-        return $human;
+        return new HumanResource($human);
     }
 
     /**

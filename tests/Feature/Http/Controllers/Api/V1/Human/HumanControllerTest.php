@@ -54,14 +54,14 @@ class HumanControllerTest extends TestCase
 
         // Assert
         $response->assertSuccessful()->assertJsonStructure([
-            'id',
-            'name',
-            'age',
-            'address',
-            'is_painful',
-            'purine',
-            'created_at',
-            'updated_at',
+            'data' => [
+                'id',
+                'name',
+                'age',
+                'address',
+                'is_painful',
+                'purine',
+            ],
         ]);
     }
 
@@ -86,7 +86,7 @@ class HumanControllerTest extends TestCase
         $response = $this->get(route('api.human.index'));
 
         // Assert
-        $response->assertSuccessful()->assertJsonCount(5);
+        $response->assertSuccessful()->assertJsonCount(5, 'data');
     }
 
     /** @test */

@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Api\V1\Food;
 use Exception;
 use App\Models\Food;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\FoodResource;
 use App\Http\Requests\Food\FoodStoreRequest;
 use App\Http\Requests\Food\FoodUpdateRequest;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class FoodController extends Controller
 {
@@ -15,31 +16,32 @@ class FoodController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        return Food::all();
+        return FoodResource::collection(Food::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param FoodStoreRequest $request
-     * @return Food|Model
+     * @return FoodResource
      */
-    public function store(FoodStoreRequest $request)
+    public function store(FoodStoreRequest $request): FoodResource
     {
-        return Food::create($request->all());
+        $food = Food::create($request->all());
+        return new FoodResource($food);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Food $food
-     * @return Food
+     * @return FoodResource
      */
-    public function show(Food $food): Food
+    public function show(Food $food): FoodResource
     {
-        return $food;
+        return new FoodResource($food);
     }
 
     /**
@@ -47,12 +49,12 @@ class FoodController extends Controller
      *
      * @param FoodUpdateRequest $request
      * @param Food $food
-     * @return Food
+     * @return FoodResource
      */
-    public function update(FoodUpdateRequest $request, Food $food): Food
+    public function update(FoodUpdateRequest $request, Food $food): FoodResource
     {
         $food->update($request->all());
-        return $food;
+        return new FoodResource($food);
     }
 
     /**

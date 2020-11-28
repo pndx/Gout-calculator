@@ -33,7 +33,7 @@ class FoodControllerTest extends TestCase
         $response = $this->get(route('api.food.index'));
 
         // Assert
-        $response->assertSuccessful()->assertJsonCount(5);
+        $response->assertSuccessful()->assertJsonCount(5, 'data');
     }
 
     /** @test */
@@ -63,11 +63,11 @@ class FoodControllerTest extends TestCase
 
         // Assert
         $response->assertSuccessful()->assertJsonStructure([
-            'id',
-            'name',
-            'purine',
-            'created_at',
-            'updated_at',
+            'data' => [
+                'id',
+                'name',
+                'purine',
+            ],
         ]);
     }
 
