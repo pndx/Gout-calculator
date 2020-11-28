@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # Created by .ignore support plugin (hsz.mobi)
+=======
+>>>>>>> release/0.1.1
 ### Laravel template
 /vendor/
 node_modules/
@@ -19,8 +22,20 @@ public_html/hot
 
 storage/*.key
 .env
+.env.backup
 Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
 .idea
+<<<<<<< HEAD
+=======
+_ide_helper.php
+*.sublime-project
+*.sublime-workspace
+coverage.xml
+sonar-project.properties
+sonar-scanner-cli-4.5.0.2216-linux.zip
+.scannerwork
+sonar-scanner-4.5.0.2216-linux
+>>>>>>> release/0.1.1

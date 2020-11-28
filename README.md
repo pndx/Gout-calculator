@@ -22,10 +22,10 @@
     <img src="resources/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">Gout Calculator</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    A simple purine calculator for patients with gout. 
     <br />
     <a href="https://github.com/pndx/Gout-calculator"><strong>Explore the docs »</strong></a>
     <br />
@@ -44,32 +44,19 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
-
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
-
-
-### Built With
-
-* []()
-* []()
-* []()
 
 
 
@@ -96,14 +83,6 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/pndx/Gout-calculator/issues) for a list of proposed features (and known issues).
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -127,21 +106,9 @@ Distributed under the GNU License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@wong_xiaoyi](https://twitter.com/wong_xiaoyi)
+Twitter - [@wong_xiaoyi](https://twitter.com/wong_xiaoyi)
 
 Project Link: [https://github.com/pndx/Gout-calculator](https://github.com/pndx/Gout-calculator)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
 
 
 
@@ -157,5 +124,5 @@ Project Link: [https://github.com/pndx/Gout-calculator](https://github.com/pndx/
 [issues-shield]: https://img.shields.io/github/issues/pndx/Gout-calculator.svg?style=flat-square
 [issues-url]: https://github.com/pndx/Gout-calculator/issues
 [license-shield]: https://img.shields.io/github/license/pndx/Gout-calculator.svg?style=flat-square
-[license-url]: https://github.com/pndx/Gout-calculator/blob/master/LICENSE.txt
+[license-url]: https://github.com/pndx/Gout-calculator/blob/main/LICENSE.txt
 [product-screenshot]: images/screenshot.png
