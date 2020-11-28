@@ -10,17 +10,17 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-    	$login = $request->validate([
-    		'email'    => 'required|email',
-    		'password' => 'required|string',
-    	]);
+        $login = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required|string',
+        ]);
 
-    	if (!Auth::attempt($login) || !$user = Auth::user()) {
-    		return ['message' => 'Invalid login credentials.'];
-    	}
+        if (!Auth::attempt($login) || !$user = Auth::user()) {
+            return ['message' => 'Invalid login credentials.'];
+        }
 
-    	$accessToken = $user->createToken('authToken')->accessToken;
+        $accessToken = $user->createToken('authToken')->accessToken;
 
-    	return ['access_token' => $accessToken];
+        return ['access_token' => $accessToken];
     }
 }
